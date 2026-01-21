@@ -1,3 +1,9 @@
 export default function Page() {
-  return <p>MY PET</p>;
+  return (
+    <div>
+      <h1>MY PET</h1>
+      <br></br>
+      <p> Coming soon...</p>
+    </div>
+  );
 }

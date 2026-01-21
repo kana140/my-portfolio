@@ -6,24 +6,25 @@ import {
   CardTitle,
 } from "@/app/ui/card";
 import { Badge } from "@/app/ui/badge";
+import { cv } from "../lib/cv-json";
 
 export default function Page() {
   const experiences = [
     {
-      title: "Senior Developer",
-      company: "Tech Company",
-      period: "2022 - Present",
+      title: "Software Developer",
+      company: "StayinFront",
+      period: "Oct, 2024 - Current",
       description:
         "Leading frontend development and architecting scalable solutions for enterprise applications.",
-      skills: ["React", "TypeScript", "Next.js", "Node.js"],
+      skills: ["C#/.NET", "JavaScript", "SQL"],
     },
     {
-      title: "Full Stack Developer",
-      company: "Startup Inc",
-      period: "2020 - 2022",
+      title: "Product Technical Support Developer",
+      company: "StayinFront",
+      period: "Jan, 2023 - Oct, 2024",
       description:
         "Built and shipped multiple products from concept to production.",
-      skills: ["JavaScript", "Python", "PostgreSQL", "AWS"],
+      skills: ["C#/.NET", "JavaScript", "SQL"],
     },
     {
       title: "Junior Developer",
@@ -35,13 +36,6 @@ export default function Page() {
     },
   ];
 
-  const education = [
-    {
-      degree: "Bachelor of Computer Science",
-      institution: "University Name",
-      period: "2014 - 2018",
-    },
-  ];
   return (
     <div className="space-y-12">
       <section>
@@ -49,10 +43,7 @@ export default function Page() {
           About
         </h2>
         <p className="text-pretty text-lg leading-relaxed">
-          I'm a passionate developer focused on creating beautiful, functional,
-          and user-centered digital experiences. With expertise in modern web
-          technologies, I bring ideas to life through clean code and thoughtful
-          design.
+          {cv.summary.professional}
         </p>
       </section>
       <section>
@@ -97,18 +88,18 @@ export default function Page() {
           Education
         </h2>
         <div className="space-y-6">
-          {education.map((edu, index) => (
+          {cv.education.map((edu, index) => (
             <Card key={index}>
               <CardHeader>
                 <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                   <div>
                     <CardTitle className="text-xl">{edu.degree}</CardTitle>
                     <CardDescription className="mt-1 text-base">
-                      {edu.institution}
+                      {edu.university}
                     </CardDescription>
                   </div>
                   <span className="text-sm text-muted-foreground">
-                    {edu.period}
+                    {edu.dates}
                   </span>
                 </div>
               </CardHeader>

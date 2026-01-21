@@ -1,22 +1,18 @@
-import Link from "next/link";
 import NavLinks from "./nav-links";
+import logo from "../../public/pictures/logo.png";
 
 export default function Nav() {
   return (
-    <div className="w-screen h-48 flex flex-col justify-center items-center">
-      <div className="flex flex-col text-center">
-        <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl">
-          <Link href="/">
-            <strong>Kei Anana </strong>
-          </Link>
-        </h1>
-        <p className="mt-3 text-pretty text-xl text-muted-foreground md:text-2xl">
-          Developer & Designer
-        </p>
+    // <div className="flex justify-center border-b border-thistle bg-dark-lavender">
+    //   <NavLinks />
+    // </div>
+    <div className="navbar sticky top-0 rounded-4xl w-[90vw] m-auto mb-2 mt-2 bg-primary shadow-md z-1">
+      <div className="flex-1">
+        <a href="/" className="">
+          <img src={logo.src} className="size-16 rounded-full" />
+        </a>
       </div>
-      <div className="flex">
-        <NavLinks />
-      </div>
+      <NavLinks />
     </div>
   );
 }
