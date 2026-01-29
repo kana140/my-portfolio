@@ -5,7 +5,6 @@ import useSound from "use-sound";
 // import clickSfx from "../../public/sounds/";
 import Profile from "../ui/profile";
 import Projects from "../ui/projects";
-import Timeline from "../ui/timeline";
 import { App } from "../lib/definitions";
 import Window from "../ui/window";
 import HoverableSprite from "../ui/hoverable-sprite";
@@ -16,7 +15,6 @@ export default function Page() {
   const [openedApp, setOpenedApp] = useState<App | null>(null);
   const [playClick] = useSound("/sounds/mouse-click.mp3");
   const [playHover] = useSound("/sounds/hover.mp3");
-  const [hoveredIndex, setHoveredIndex] = useState<number>(0);
 
   function openApp(app: App) {
     setOpenedApp(app);
@@ -125,23 +123,17 @@ export default function Page() {
             {taskBarApps.map((app, index) => (
               <div
                 key={index}
-                className="hover:scale-105 size-16 cursor-pointer"
+                className="size-16 flex items-end justify-center relative cursor-pointer hover:scale-105"
                 onClick={() => {
                   playClick();
-                  console.log("clicked app:", app.title, app);
                   setOpenedApp(app);
                 }}
-                // onMouseEnter={() => {
-                //   playHover();
-                // }}
                 onMouseEnter={() => {
                   playHover();
-                  setHoveredIndex(1);
                 }}
-                onMouseLeave={() => setHoveredIndex(0)}
               >
                 {app?.animate ? (
-                  <HoverableSprite image={app.image} frameNo={hoveredIndex} />
+                  <HoverableSprite image={app.image} />
                 ) : app.externalLink ? (
                   <a href={app.externalLink} target="_blank">
                     <img src={app.image}></img>
