@@ -5,14 +5,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/ui/card";
-import { Badge } from "@/app/ui/badge";
-import { Button } from "@/app/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { Badge } from "./badge";
 import Video from "next-video";
-import Image from "next/image";
-import valentinesGif from "@/public/gif.gif";
+import { Button } from "./button";
+import { ExternalLink } from "lucide-react";
+import { Github } from "lucide-react";
 
-export default function Page() {
+export default function Projects() {
   const projects = [
     {
       title: "Little Calendars",

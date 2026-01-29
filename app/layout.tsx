@@ -31,13 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Nav />
-        <div className="min-h-screen w-full items-center justify-center font-sans">
-          <main className="min-h-screen w-[85vw] m-auto flex-col items-center py-8 justify-between sm:items-start">
+        {/* <Nav /> */}
+        <div className="min-h-screen w-full items-center justify-center font-sans bg-desktop-background">
+          <main className="min-h-screen w-[90vw] m-auto flex flex-col items-center justify-between sm:items-start">
             {children}
           </main>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

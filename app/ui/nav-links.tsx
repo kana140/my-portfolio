@@ -7,22 +7,18 @@ const links = [
   {
     name: "About Me",
     href: "/#about-me",
-    // icon: HomeIcon
   },
   {
     name: "Projects",
     href: "/projects",
-    // icon: DocumentDuplicateIcon,
   },
   {
     name: "Blog",
     href: "/blog",
-    //  icon: UserGroupIcon
   },
   {
     name: "Pet",
     href: "pet",
-    //  icon: UserGroupIcon
   },
 ];
 

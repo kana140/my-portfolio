@@ -37,7 +37,7 @@ const cv = {
     "TypeScript",
     "Python",
   ],
-  hobbies: [],
+  hobbies: ["Working on mini projects", "Pilates", "YouTube"],
 };
 
 export { cv };
