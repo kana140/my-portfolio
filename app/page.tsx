@@ -66,9 +66,11 @@ export default function Home() {
             )}
           </div>
           <div
-            className={`${pixelify.className} m-auto size-32 bg-[url(/pictures/sticky-note.png)] text-center flex`}
+            className={`${pixelify.className} m-auto size-32 bg-[url(/pictures/sticky-note.png)] text-center flex flex-col`}
           >
-            <p className="m-auto">To do: improve ui</p>
+            <div className="m-auto">
+              <p className="">To do: </p> <p> improve UI </p>
+            </div>
           </div>
         </div>
         <div className="">
