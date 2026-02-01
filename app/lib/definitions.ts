@@ -47,4 +47,5 @@ export type SocialLinks = {
   icon: LucideIcon;
   link?: string;
   contact?: string;
+  title: string;
 };
