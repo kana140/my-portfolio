@@ -24,7 +24,7 @@ export type Project = {
 
 export type App = {
   title: string;
-  component: ComponentType;
+  component: ComponentType | undefined;
   defaultSize: { w: number; h: number };
   image: string;
   animate?: boolean;
