@@ -26,7 +26,7 @@ export default function Projects() {
       title: "Forseti",
       description:
         "A full-featured online store with cart management, payment integration, and admin dashboard.",
-      image: "/modern-ecommerce-website.png",
+      image: "/forseti.jpeg",
       tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/kana140/Forseti",

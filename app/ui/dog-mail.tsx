@@ -68,9 +68,14 @@ export default function DogMail() {
           />
         </div>
       </div>
+      {initialState.error && (
+        <>
+          <p className="text-sm text-red-500 mr-auto">{initialState.error}</p>
+        </>
+      )}
       <button
         type="submit"
-        className=" pixel-corners w-16 button bg-button ml-auto border "
+        className="pixel-corners w-16 button bg-button ml-auto border "
       >
         Send
       </button>
