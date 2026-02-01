@@ -46,7 +46,7 @@ export default function Projects() {
     <div className="space-y-8">
       <div className="grid gap-8 md:grid-cols-2">
         {projects.map((project, index) => (
-          <Card key={index} className="overflow-hidden">
+          <Card key={index} className="overflow-hidden bg-base-200">
             <div className="aspect-video w-full bg-muted">
               {project.video ? (
                 <Video src={project.video}></Video>

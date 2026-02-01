@@ -22,11 +22,11 @@ export default function Window({
         aria-modal="true"
         aria-label={title}
       >
-        <div className="h-10 flex items-center justify-between px-3 bg-border select-none text-white">
+        <div className="h-7 flex items-center justify-between px-3 bg-border select-none text-white">
           <div className="font-medium text-sm">{title}</div>
           <button
             onClick={onClose}
-            className="px-2 hover:bg-white/10 rounded border-2 cursor-pointer"
+            className="px-2 hover:bg-white/10 cursor-pointer"
             aria-label="Close window"
             type="button"
           >

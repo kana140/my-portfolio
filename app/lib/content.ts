@@ -14,7 +14,7 @@ export const apps: App[] = [
   {
     title: "Experience",
     component: MyExperiences,
-    defaultSize: { w: 500, h: 600 },
+    defaultSize: { w: 500, h: 700 },
     image: "/pictures/cv.png",
   },
   {
@@ -28,14 +28,14 @@ export const apps: App[] = [
 export const taskBarApps: App[] = [
   {
     title: "GitHub",
-    component: Profile,
+    component: undefined,
     defaultSize: { w: 500, h: 500 },
     image: "/pictures/github-external.png",
     externalLink: "https://github.com/kana140",
   },
   {
     title: "LinkedIn",
-    component: Profile,
+    component: undefined,
     defaultSize: { w: 500, h: 500 },
     image: "/pictures/linkedin.png",
     externalLink: "https://www.linkedin.com/in/keitelanana/",

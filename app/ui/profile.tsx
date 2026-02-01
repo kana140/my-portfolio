@@ -5,9 +5,13 @@ import { Badge } from "./badge";
 import { SocialLinks } from "../lib/definitions";
 
 const socialLinks: SocialLinks[] = [
-  { icon: Github, link: "https://github.com/kana140" },
-  { icon: Linkedin, link: "https://linkedin.com/in/keitelanana" },
-  { icon: Mail, contact: "keitelwinslet@gmail.com" },
+  { icon: Github, link: "https://github.com/kana140", title: "GitHub" },
+  {
+    icon: Linkedin,
+    link: "https://linkedin.com/in/keitelanana",
+    title: "LinkedIn",
+  },
+  { icon: Mail, contact: "keitelwinslet@gmail.com", title: "Email" },
 ];
 
 export default function Profile() {
@@ -15,32 +19,34 @@ export default function Profile() {
     <div className="bg-base-100">
       <div className="flex flex-col gap-2">
         <div>
-          <div className="avatar avatar-online">
-            <div className="ring-primary ring-offset-base-100 w-32 rounded-full ring-2 ring-offset-2">
+          <div className="avatar">
+            <div className="ring-primary ring-offset-base-100 w-32 rounded-full ring-2 ring-offset-2 mb-2">
               <img src={me.src} />
             </div>
           </div>
         </div>
-        <h2 className="text-lg font-bold">Keitel Anana</h2>
-        {socialLinks.map((social, key) => (
-          <div key={key} className="flex flex-row text-xs gap-2 items-center">
-            {social.link ? (
-              <a
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
+        <h2 className="text-xl font-bold">Keitel Anana</h2>
+        <div className="flex flex-col">
+          {socialLinks.map((social, key) => (
+            <div key={key} className="flex flex-row text-xs gap-2 items-center">
+              {social.link ? (
+                <a
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <social.icon className="size-[1.5em]" />
+                </a>
+              ) : (
                 <social.icon className="size-[1.5em]" />
-              </a>
-            ) : (
-              <social.icon className="size-[1.5em]" />
-            )}
-            <p>{social.link ?? social.contact}</p>
-          </div>
-        ))}
+              )}
+              <p className="font-light">{social.title ?? social.contact}</p>
+            </div>
+          ))}
+        </div>
 
-        <p className="mt-2 text-sm">
+        <p className="mt-2 text-sm leading-relaxed">
           Hello! I'm a Software Developer with three years of experience. I
           mostly work with C#/.NET and JavaScript, but I love to play around
           with different technology for side projects (like this website, for
