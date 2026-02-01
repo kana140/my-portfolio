@@ -6,6 +6,7 @@ import Window from "./ui/window";
 import HoverableSprite from "./ui/hoverable-sprite";
 import { apps, taskBarApps } from "./lib/content";
 import { App } from "./lib/definitions";
+import { pixelify } from "./ui/fonts";
 
 export default function Home() {
   const initialApp: App | undefined = apps.find(
@@ -64,7 +65,11 @@ export default function Home() {
               </Window>
             )}
           </div>
-          <div aria-hidden="true" />
+          <div
+            className={`${pixelify.className} m-auto size-32 bg-[url(/pictures/sticky-note.png)] text-center flex`}
+          >
+            <p className="m-auto">To do: improve ui</p>
+          </div>
         </div>
         <div className="">
           <div className="rounded-full bg-blue-100/80 backdrop-hue-rotate-45 w-[60%] h-12 m-auto flex flex-row gap-5 justify-evenly items-end">
