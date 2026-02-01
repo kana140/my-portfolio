@@ -12,7 +12,7 @@ const socialLinks: SocialLinks[] = [
 
 export default function Profile() {
   return (
-    <div>
+    <div className="bg-base-100">
       <div className="flex flex-col gap-2">
         <div>
           <div className="avatar avatar-online">

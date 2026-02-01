@@ -2,16 +2,16 @@
 import { useState } from "react";
 import Modal from "./ui/modal";
 import useSound from "use-sound";
-import Profile from "./ui/profile";
-import Projects from "./ui/projects";
-import { App } from "./lib/definitions";
 import Window from "./ui/window";
 import HoverableSprite from "./ui/hoverable-sprite";
-import MyExperiences from "./ui/my-experience";
-import DogMail from "./ui/dog-mail";
+import { apps, taskBarApps } from "./lib/content";
+import { App } from "./lib/definitions";
 
 export default function Home() {
-  const [openedApp, setOpenedApp] = useState<App | null>(null);
+  const initialApp: App | undefined = apps.find(
+    (app) => app.title === "FakeBook",
+  );
+  const [openedApp, setOpenedApp] = useState<App | undefined>(initialApp);
   const [playClick] = useSound("/sounds/mouse-click.mp3");
   const [playHover] = useSound("/sounds/hover.mp3");
 
@@ -20,58 +20,12 @@ export default function Home() {
   }
 
   function closeApp() {
-    setOpenedApp(null);
+    setOpenedApp(undefined);
   }
-
-  const apps: App[] = [
-    {
-      title: "FakeBook",
-      component: Profile,
-      defaultSize: { w: 500, h: 500 },
-      image: "/pictures/fakebook.png",
-    },
-    {
-      title: "Experience",
-      component: MyExperiences,
-      defaultSize: { w: 500, h: 500 },
-      image: "/pictures/cv.png",
-    },
-    {
-      title: "Projects",
-      component: Projects,
-      defaultSize: { w: 800, h: 700 },
-      image: "/pictures/projects.png",
-    },
-  ];
-
-  const taskBarApps: App[] = [
-    {
-      title: "GitHub",
-      component: Profile,
-      defaultSize: { w: 500, h: 500 },
-      image: "/pictures/github-external.png",
-      externalLink: "https://github.com/kana140",
-    },
-    {
-      title: "LinkedIn",
-      component: Profile,
-      defaultSize: { w: 500, h: 500 },
-      image: "/pictures/linkedin.png",
-      externalLink: "https://www.linkedin.com/in/keitelanana/",
-    },
-    {
-      title: "DogMail",
-      component: DogMail,
-      defaultSize: { w: 500, h: 300 },
-      image: "/pictures/dog-mail.png",
-      animate: true,
-    },
-  ];
 
   return (
     <div className="m-auto w-[100vh] bg-desktop shadow-md p-5 flex flex-row">
       <div className="w-full h-[80vh] m-auto bg-[url(/pictures/background.png)] flex flex-col justify-between p-5">
-        {/* <div className="grid grid-cols-3 p-5"> */}
         <div className="grid grid-cols-[1fr_auto_1fr]">
           <div className="grid grid-cols-1 gap-5">
             {apps.map((app, index) => (
@@ -110,7 +64,6 @@ export default function Home() {
               </Window>
             )}
           </div>
-          {/* <div className="pixel-corners bg-blue-100 size-52 ml-auto"></div> */}
           <div aria-hidden="true" />
         </div>
         <div className="">
@@ -140,10 +93,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-        {/* <div className="bg-white pixel-corners w-[90%] h-[90%] m-auto"></div> */}
-        {/* <h1>MY PET</h1>
-      <br></br>
-      <p> Coming soon...</p> */}
       </div>
     </div>
   );
