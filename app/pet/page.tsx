@@ -63,7 +63,7 @@ export default function Page() {
     {
       title: "DogMail",
       component: DogMail,
-      defaultSize: { w: 500, h: 500 },
+      defaultSize: { w: 500, h: 300 },
       image: "/pictures/dog-mail.png",
       animate: true,
     },

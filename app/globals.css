@@ -65,6 +65,7 @@ body {
   --color-window: #fffbf9;
   --color-border: #7a9ab5;
   --color-desktop-background: #e9f2e9;
+  --color-hr: #a8cad3;
   /* --color-background: #f1f0f4; */
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   @keyframes wiggle {

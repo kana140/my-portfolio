@@ -23,7 +23,7 @@ export default function Profile() {
         </div>
         <h2 className="text-lg font-bold">Keitel Anana</h2>
         {socialLinks.map((social, key) => (
-          <div className="flex flex-row text-xs gap-2 items-center">
+          <div key={key} className="flex flex-row text-xs gap-2 items-center">
             {social.link ? (
               <a
                 href={social.link}
