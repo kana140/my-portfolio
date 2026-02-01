@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Modal from "../ui/modal";
 import useSound from "use-sound";
-// import clickSfx from "../../public/sounds/";
 import Profile from "../ui/profile";
 import Projects from "../ui/projects";
 import { App } from "../lib/definitions";
@@ -68,10 +67,6 @@ export default function Page() {
       animate: true,
     },
   ];
-
-  // const activeApp = openedApp
-  //   ? apps.find((item) => item.title === openedApp.title)
-  //   : null;
 
   return (
     <div className="m-auto w-[100vh] bg-desktop shadow-md p-5 flex flex-row">

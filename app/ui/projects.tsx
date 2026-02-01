@@ -17,7 +17,7 @@ export default function Projects() {
       title: "Little Calendars",
       description:
         "An interactive, customisable online gift calendar that allows users to surprise friends or partners with daily digital “gifts” released over time",
-      image: "/weather-app-interface.png",
+      image: "/pictures/little-calendars.png",
       tags: ["Next.js", "TypeScript"],
       liveUrl: "https://12-days-of.vercel.app/",
       githubUrl: "https://github.com/kana140/12-days-of",
@@ -26,16 +26,15 @@ export default function Projects() {
       title: "Forseti",
       description:
         "A full-featured online store with cart management, payment integration, and admin dashboard.",
-      image: "/forseti.jpeg",
+      image: "/pictures/forseti.jpeg",
       tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/kana140/Forseti",
     },
     {
       title: "Poopey Valentines",
       description:
-        "Collaborative task manager with real-time updates, team workspaces, and deadline tracking.",
-      image: "/task-management-dashboard.png",
+        "A playful React mini-app featuring pixel-animated characters, timed interactions, and event-based UI changes.",
       video: "/videos/peanut-fishing.mov",
       tags: ["React", "Firebase", "JavaScript"],
       liveUrl: "https://poopey-valentines.vercel.app/",
@@ -74,16 +73,21 @@ export default function Projects() {
                 ))}
               </div>
               <div className="flex gap-2">
-                <Button variant="default" size="sm" asChild>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </a>
-                </Button>
+                {project.liveUrl ? (
+                  <Button variant="default" size="sm" asChild>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Live Demo
+                    </a>
+                  </Button>
+                ) : (
+                  <div></div>
+                )}
+
                 <Button variant="outline" size="sm" asChild>
                   <a
                     href={project.githubUrl}
