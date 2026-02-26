@@ -8,7 +8,7 @@ export const apps: App[] = [
   {
     title: "FakeBook",
     component: Profile,
-    defaultSize: { w: 400, h: 500 },
+    defaultSize: { w: "[50%]", h: "70%" },
     image: "/pictures/fakebook.png",
   },
   {

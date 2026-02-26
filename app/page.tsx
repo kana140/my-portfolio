@@ -25,12 +25,12 @@ export default function Home() {
   }
 
   return (
-    <div className="m-auto w-[100vh] bg-desktop shadow-md p-5 flex flex-row">
-      <div className="w-full h-[80vh] m-auto bg-[url(/pictures/background.png)] flex flex-col justify-between p-5">
-        <div className="grid grid-cols-[1fr_auto_1fr]">
+    <div className="p-2 h-screen bg-desktop shadow-md">
+      <div className="m-auto h-full w-full bg-[url(/pictures/background.png)] flex flex-col justify-between p-2">
+        <div className="flex flex-row">
           <div className="grid grid-cols-1 gap-5">
             {apps.map((app, index) => (
-              <div key={index} className="">
+              <div key={index} className="inline-flex flex-col items-center">
                 <div
                   className={`size-20 hover:scale-105 cursor-pointer shadow-s`}
                   onClick={() => {
@@ -65,20 +65,57 @@ export default function Home() {
               </Window>
             )}
           </div>
-          <div
-            className={`${pixelify.className} m-auto size-32 bg-[url(/pictures/sticky-note.png)] text-center flex flex-col`}
-          >
+          <div className="m-auto border-2 border-black bg-pink-50 w-70 p-5 text-center">
             <div className="m-auto">
-              <p className="">To do: </p> <p> improve UI </p>
+              <p>Hi, I'm Keitel (Key-tell), but you can call me Key!</p>
+              <br />
+              <p>
+                Feel free to look around, this is very much a work in progress
+                but I hope you can see how much fun I've been having making this
+                so far.
+              </p>
+              <br />
+              <p>
+                I'm still trying to find ways to make this better, so please
+                feel free to let me know if you have any suggestions on how I
+                could improve!
+              </p>
+            </div>
+          </div>
+          <div
+            className={`${pixelify.className} ml-auto border-2 border-black bg-yellow-100 text-center flex flex-col`}
+          >
+            {/* ooooh make this a tickable thinggg */}
+            <div className="p-2">
+              <p className="">To do: </p>
+              <ul>
+                <input type="checkbox" /> Check out Profile{" "}
+              </ul>
+              <ul>
+                <input type="checkbox" /> Check out Experience{" "}
+              </ul>
+              <ul>
+                <input type="checkbox" /> Check out projects{" "}
+              </ul>
+              <ul>
+                <input type="checkbox" /> Visit LinkedIn{" "}
+              </ul>
+              <ul>
+                <input type="checkbox" /> Send me a message{" "}
+              </ul>
+              <ul>
+                {" "}
+                {/* <input type="checkbox" /> Leave a message in guest book! */}
+              </ul>
             </div>
           </div>
         </div>
         <div className="">
-          <div className="rounded-full bg-blue-100/80 backdrop-hue-rotate-45 w-[60%] h-12 m-auto flex flex-row gap-5 justify-evenly items-end">
+          <div className="rounded-full bg-blue-100/80 backdrop-hue-rotate-45 m-auto flex flex-row items-center justify-center gap-2">
             {taskBarApps.map((app, index) => (
               <div
                 key={index}
-                className="size-16 flex items-end justify-center relative cursor-pointer hover:scale-105"
+                className="size-14 flex items-end justify-center relative cursor-pointer hover:scale-105"
                 onClick={() => {
                   playClick();
                   setOpenedApp(app);

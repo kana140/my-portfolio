@@ -16,7 +16,7 @@ const socialLinks: SocialLinks[] = [
 
 export default function Profile() {
   return (
-    <div className="bg-base-100">
+    <div className="">
       <div className="flex flex-col gap-2">
         <div>
           <div className="avatar">
@@ -47,10 +47,9 @@ export default function Profile() {
         </div>
 
         <p className="mt-2 text-sm leading-relaxed">
-          Hello! I'm a Software Developer with three years of experience. I
-          mostly work with C#/.NET and JavaScript, but I love to play around
-          with different technology for side projects (like this website, for
-          example!)
+          I'm a Software Developer with three years of experience. I mostly work
+          with C#/.NET and JavaScript, but I love to play around with different
+          technology for side projects (like this website, for example!)
         </p>
         {/* name of each tab group should be unique */}
         <div className="tabs tabs-lift">

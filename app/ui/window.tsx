@@ -15,8 +15,8 @@ export default function Window({
       />
 
       <div
-        className="relative rounded-sm bg-window shadow-lg border-2 border-black/50 overflow-hidden z-1"
-        style={{ width: defaultSize.w, height: defaultSize.h }}
+        className={`relative rounded-sm bg-window shadow-lg border-2 border-black/50 overflow-hidden z-1 w-[90vw] md:w-${defaultSize.w}`}
+        style={{ height: defaultSize.h }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

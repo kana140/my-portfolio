@@ -25,7 +25,7 @@ export type Project = {
 export type App = {
   title: string;
   component: ComponentType | undefined;
-  defaultSize: { w: number; h: number };
+  defaultSize: { w: number | string; h: number | string };
   image: string;
   animate?: boolean;
   externalLink?: string;
@@ -33,7 +33,7 @@ export type App = {
 
 export type WindowProps = {
   title: string;
-  defaultSize: { w: number; h: number };
+  defaultSize: { w: number | string; h: number | string };
   onClose: () => void;
   children: React.ReactNode;
   closeOnBackdropClick?: boolean;
