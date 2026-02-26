@@ -108,7 +108,7 @@ export default function Home() {
           </div>
         </div>
         <div className="">
-          <div className="rounded-full bg-blue-100/80 backdrop-hue-rotate-45 m-auto flex flex-row items-center justify-center gap-2">
+          <div className="w-58 p-2 rounded-2xl bg-blue-100/80 backdrop-hue-rotate-45 m-auto flex flex-row justify-around">
             {taskBarApps.map((app, index) => (
               <div
                 key={index}
