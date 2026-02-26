@@ -9,10 +9,7 @@ import { App } from "./lib/definitions";
 import { pixelify } from "./ui/fonts";
 
 export default function Home() {
-  const initialApp: App | undefined = apps.find(
-    (app) => app.title === "FakeBook",
-  );
-  const [openedApp, setOpenedApp] = useState<App | undefined>(initialApp);
+  const [openedApp, setOpenedApp] = useState<App | undefined>();
   const [playClick] = useSound("/sounds/mouse-click.mp3");
   const [playHover] = useSound("/sounds/hover.mp3");
 
