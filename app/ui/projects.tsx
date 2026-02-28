@@ -10,51 +10,25 @@ import Video from "next-video";
 import { Button } from "./button";
 import { ExternalLink } from "lucide-react";
 import { Github } from "lucide-react";
+import Image from "next/image";
+import { PROJECTS } from "../lib/content";
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Little Calendars",
-      description:
-        "An interactive, customisable online gift calendar that allows users to surprise friends or partners with daily digital “gifts” released over time",
-      image: "/pictures/little-calendars.png",
-      tags: ["Next.js", "TypeScript"],
-      liveUrl: "https://12-days-of.vercel.app/",
-      githubUrl: "https://github.com/kana140/12-days-of",
-    },
-    {
-      title: "Forseti",
-      description:
-        "A full-featured online store with cart management, payment integration, and admin dashboard.",
-      image: "/pictures/forseti.jpeg",
-      tags: ["Next.js", "PostgreSQL", "Tailwind"],
-      // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/kana140/Forseti",
-    },
-    {
-      title: "Poopey Valentines",
-      description:
-        "A playful React mini-app featuring pixel-animated characters, timed interactions, and event-based UI changes.",
-      video: "/videos/peanut-fishing.mov",
-      tags: ["React", "Firebase", "JavaScript"],
-      liveUrl: "https://poopey-valentines.vercel.app/",
-      githubUrl: "https://github.com/kana140/poopey-valentines",
-    },
-  ];
-
   return (
     <div className="space-y-8">
       <div className="grid gap-8 md:grid-cols-2">
-        {projects.map((project, index) => (
+        {PROJECTS.map((project, index) => (
           <Card key={index} className="overflow-hidden">
             <div className="aspect-video w-full bg-muted">
               {project.video ? (
                 <Video src={project.video}></Video>
               ) : (
-                <img
+                <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   className="h-full w-full object-cover transition-transform hover:scale-105"
+                  width={100}
+                  height={100}
                 />
               )}
             </div>

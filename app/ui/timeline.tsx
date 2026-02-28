@@ -5,6 +5,7 @@ import {
   FileCode,
   CircleCheck,
 } from "lucide-react";
+import { EXPERIENCE_TIMELINE } from "../lib/content";
 
 export default function Timeline() {
   return (
@@ -18,62 +19,29 @@ export default function Timeline() {
         </div>
         <hr className="bg-text" />
       </li>
-      <li>
-        <hr className="bg-text" />
-        <div className="timeline-middle">
-          <FileCode />
-        </div>
-        <div className="timeline-end md:mb-10">
-          <time className="font-mono italic">September, 2024</time>
-          <div className="text-lg font-black">
-            Software Developer - StayinFront
+      {EXPERIENCE_TIMELINE.map((experience, index) => (
+        <li key={index}>
+          <hr className="bg-text" />
+          <div className="timeline-middle">
+            <experience.icon />
           </div>
-          Moved to Feature Patch Team. Deliver features in a fast paced
-          environment
-        </div>
-        <hr className="bg-text" />
-      </li>
-      <li>
-        <hr className="bg-text" />
-        <div className="timeline-middle">
-          <BugOff />
-        </div>
-        <div className="timeline-start mb-10 md:text-end">
-          <time className="font-mono italic">January, 2023</time>
-          <div className="text-lg font-black">
-            Product Technical Support Developer
+          <div
+            className={`${index % 2 === 0 ? "timeline-start mb-10 md:text-end" : "timeline-end md:mb-10"}`}
+          >
+            <time className="font-mono italic">{experience.timeframe}</time>
+            <p>
+              <i>{experience.company}</i>
+            </p>
+            <div className="text-lg font-black">{experience.role}</div>
+            {experience.description}
           </div>
-          Started career maintaining a Data Warehouse product where I learned
-          strong technical skills in debugging and problem-solving high-priority
-          production issues
-        </div>
-        <hr className="bg-text" />
-      </li>
-      <li>
-        <hr className="bg-text" />
-        <div className="timeline-middle">
-          <GraduationCap />
-        </div>
-        <div className="timeline-end md:mb-10">
-          <time className="font-mono italic">March, 2023</time>
-          <div className="text-lg font-black">
-            Graduated with a Bachelors of Science degree, Majoring in Computer
-            Science
-          </div>
-        </div>
-        <hr className="bg-text" />
-      </li>
-      <li>
-        <hr className="bg-text" />
-        <div className="timeline-middle">
-          <NotebookPen />
-        </div>
-        <div className="timeline-start mb-10 md:text-end">
-          <time className="font-mono italic">March, 2022</time>
-          <div className="text-lg font-black">Teaching Assistant</div>
-          Assisted students in lab sessions
-        </div>
-      </li>
+          {index != EXPERIENCE_TIMELINE.length - 1 ? (
+            <hr className="bg-text" />
+          ) : (
+            <></>
+          )}
+        </li>
+      ))}
     </ul>
   );
 }
