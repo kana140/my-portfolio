@@ -1,43 +1,89 @@
+"use client";
 import { WindowProps } from "../lib/definitions";
+import { useRef } from "react";
+import { isMobile } from "react-device-detect";
 
 export default function Window({
   title,
   defaultSize,
+  x,
+  y,
+  z,
+  onFocus,
   onClose,
+  onMinimize,
+  onMove,
   children,
-  closeOnBackdropClick = true,
 }: WindowProps) {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div
-        className="absolute inset-0"
-        onClick={closeOnBackdropClick ? onClose : undefined}
-      />
+  const dragRef = useRef({
+    dragging: false,
+    startX: 0,
+    startY: 0,
+    originX: 0,
+    originY: 0,
+  });
 
+  const onMouseDownTitle = (e: { clientX: any; clientY: any }) => {
+    onFocus?.();
+    dragRef.current = {
+      dragging: true,
+      startX: e.clientX,
+      startY: e.clientY,
+      originX: Number(x),
+      originY: Number(y),
+    };
+
+    const onMoveDoc = (ev: { clientX: number; clientY: number }) => {
+      if (!dragRef.current.dragging) return;
+      const dx = ev.clientX - dragRef.current.startX;
+      const dy = ev.clientY - dragRef.current.startY;
+      onMove?.(dragRef.current.originX + dx, dragRef.current.originY + dy);
+    };
+
+    const onUpDoc = () => {
+      dragRef.current.dragging = false;
+      document.removeEventListener("mousemove", onMoveDoc);
+      document.removeEventListener("mouseup", onUpDoc);
+    };
+
+    document.addEventListener("mousemove", onMoveDoc);
+    document.addEventListener("mouseup", onUpDoc);
+  };
+
+  return (
+    <div
+      className={`absolute rounded-xl bg-window shadow-lg border-2 border-black/50 dark:bg-neutral-800 dark:text-white dark:shadow-lg dark:border dark:border-white/10 overflow-hidden`}
+      style={{
+        left: isMobile ? 0 : x,
+        top: isMobile ? "10%" : y,
+        width: isMobile ? "auto" : defaultSize.w,
+        height: isMobile ? "auto" : defaultSize.h,
+        zIndex: z,
+      }}
+      onMouseDown={onFocus}
+    >
       <div
-        className={`relative rounded-sm bg-window shadow-lg border-2 border-black/50 overflow-hidden z-1 w-[90vw] md:w-${defaultSize.w}`}
-        style={{ height: defaultSize.h }}
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label={title}
+        className="h-10 flex items-center justify-between px-3 bg-border  dark:bg-neutral-900 cursor-move select-none"
+        onMouseDown={onMouseDownTitle}
       >
-        <div className="h-7 flex items-center justify-between px-3 bg-border select-none text-white">
-          <div className="font-medium text-sm">{title}</div>
+        <div className="font-medium text-sm">{title}</div>
+        <div className="flex gap-2">
           <button
-            onClick={onClose}
-            className="px-2 hover:bg-white/10 cursor-pointer"
-            aria-label="Close window"
-            type="button"
+            onClick={(e) => (e.stopPropagation(), onMinimize?.())}
+            className="cursor-pointer rounded-full bg-yellow-500 text-transparent font-bold size-3 flex items-center justify-center hover:text-shadow-neutral-800"
+          >
+            —
+          </button>
+          <button
+            onClick={(e) => (e.stopPropagation(), onClose?.())}
+            className="cursor-pointer rounded-full bg-red-500 text-transparent font-bold size-3 flex items-center justify-center hover:text-shadow-neutral-800"
           >
             ×
           </button>
         </div>
-
-        <div className="h-[calc(100%-2.5rem)] p-4 overflow-auto">
-          {children}
-        </div>
       </div>
+
+      <div className="h-[calc(100%-2.5rem)] p-4 overflow-auto">{children}</div>
     </div>
   );
 }
