@@ -4,6 +4,7 @@ import Timeline from "../ui/timeline";
 import { useState } from "react";
 import me from "../../public/pictures/mee.jpeg";
 import { Badge } from "./badge";
+import Image from "next/image";
 
 export default function AboutMe() {
   const [professional, setProfessional] = useState(false);
@@ -24,7 +25,7 @@ export default function AboutMe() {
         <div className="flex w-2/6 flex-col gap-5">
           <div className="avatar my-2">
             <div className="w-64 rounded-full m-auto">
-              <img src={me.src} />
+              <Image src={me.src} alt="image of me" width={100} height={100} />
             </div>
           </div>
           <div className="hero bg-primary rounded-3xl shadow-md">

@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { cv } from "../lib/cv-json";
 import { Badge } from "./badge";
 import { SocialLinks } from "../lib/definitions";
+import Image from "next/image";
 
 const socialLinks: SocialLinks[] = [
   { icon: Github, link: "https://github.com/kana140", title: "GitHub" },
@@ -21,7 +22,7 @@ export default function Profile() {
         <div>
           <div className="avatar">
             <div className="ring-primary ring-offset-base-100 w-32 rounded-full ring-2 ring-offset-2 mb-2">
-              <img src={me.src} />
+              <Image src={me.src} alt="image of me" width={100} height={100} />
             </div>
           </div>
         </div>
