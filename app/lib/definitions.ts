@@ -22,21 +22,43 @@ export type Project = {
     | "COMPLETED YIPPIEE";
 };
 
+export type OpenWindow = {
+  id: string;
+  appId: string;
+  app: App;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  z: number;
+  minimized: boolean;
+};
+
 export type App = {
   title: string;
   component: ComponentType | undefined;
-  defaultSize: { w: number | string; h: number | string };
+  defaultSize: { w: number; h: number };
   image: string;
   animate?: boolean;
   externalLink?: string;
 };
 
+export type IconsProp = {
+  open: (id: string, app: App) => void;
+};
+
 export type WindowProps = {
   title: string;
-  defaultSize: { w: number | string; h: number | string };
+  defaultSize: { w: number; h: number };
   onClose: () => void;
   children: React.ReactNode;
   closeOnBackdropClick?: boolean;
+  onFocus: () => void;
+  onMinimize: () => void;
+  onMove: (x: number, y: number) => void;
+  x: number;
+  y: number;
+  z: number;
 };
 
 export type HoverableSpriteProp = {
