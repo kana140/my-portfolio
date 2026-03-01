@@ -23,7 +23,7 @@ export default function DogMail() {
             name="myEmail"
             defaultValue="keitelwinslet@gmail.com"
             readOnly={true}
-            className=""
+            className="outline-none"
           />
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function DogMail() {
             type="email"
             name="fromEmail"
             required
-            className=""
+            className="outline-none"
           />
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function DogMail() {
             type="text"
             name="subject"
             required
-            className=""
+            className="outline-none"
           />
         </div>
       </div>
@@ -64,7 +64,7 @@ export default function DogMail() {
             id="message"
             name="message"
             required
-            className="w-full h-full p-2 rounded-sm"
+            className="w-full h-full p-2 rounded-sm outline-none"
           />
         </div>
       </div>
