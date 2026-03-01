@@ -41,6 +41,7 @@ export type App = {
   image: string;
   animate?: boolean;
   externalLink?: string;
+  link?: string;
 };
 
 export type IconsProp = {
@@ -59,6 +60,7 @@ export type WindowProps = {
   x: number;
   y: number;
   z: number;
+  link?: string;
 };
 
 export type HoverableSpriteProp = {

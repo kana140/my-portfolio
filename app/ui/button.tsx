@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import clsx from "clsx";
 
 import { cn } from "@/app/lib/utils";
 
@@ -31,11 +32,12 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
@@ -50,8 +52,29 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
+const ChromeButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+
+    return (
+      <Comp
+        ref={ref}
+        className={clsx(
+          "inline-flex items-center justify-center",
+          "p-2 rounded-full",
+          "bg-transparent hover:bg-gray-200",
+          "transition-colors",
+          className,
+        )}
+        {...props}
+      />
+    );
+  },
+);
+ChromeButton.displayName = "ChromeButton";
+
+export { Button, ChromeButton, buttonVariants };

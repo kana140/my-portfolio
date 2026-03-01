@@ -2,6 +2,7 @@
 import { WindowProps } from "../lib/definitions";
 import { useRef } from "react";
 import { isMobile } from "react-device-detect";
+import ChromeBar from "./chrome";
 
 export default function Window({
   title,
@@ -14,6 +15,7 @@ export default function Window({
   onMinimize,
   onMove,
   children,
+  link,
 }: WindowProps) {
   const dragRef = useRef({
     dragging: false,
@@ -22,6 +24,12 @@ export default function Window({
     originX: 0,
     originY: 0,
   });
+
+  const submitSearch = (search: string) => {
+    if (search != "https://www.facebook.com/keitel.anana/") {
+      return false;
+    }
+  };
 
   const onMouseDownTitle = (e: { clientX: any; clientY: any }) => {
     onFocus?.();
@@ -52,7 +60,7 @@ export default function Window({
 
   return (
     <div
-      className={`absolute rounded-xl bg-window shadow-lg border-2 border-black/50 dark:bg-neutral-800 dark:text-white dark:shadow-lg dark:border dark:border-white/10 overflow-hidden`}
+      className={`absolute flex flex-col rounded-xl bg-window shadow-lg border-2 border-black/50 dark:bg-neutral-800 dark:text-white dark:shadow-lg dark:border dark:border-white/10 `}
       style={{
         left: isMobile ? 0 : x,
         top: isMobile ? "10%" : y,
@@ -82,8 +90,10 @@ export default function Window({
           </button>
         </div>
       </div>
-
-      <div className="h-[calc(100%-2.5rem)] p-4 overflow-auto">{children}</div>
+      {link ? <ChromeBar /> : ""}
+      <div className={`flex-1 ${link ? " " : "p-4"} overflow-auto`}>
+        {children}
+      </div>
     </div>
   );
 }

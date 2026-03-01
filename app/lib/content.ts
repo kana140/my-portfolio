@@ -12,6 +12,7 @@ export const APPS = {
     component: Profile,
     defaultSize: { w: 500, h: 500 },
     image: "/pictures/fakebook.png",
+    link: "https://www.facebook.com/keitel.anana/",
   },
   experience: {
     title: "Experience",

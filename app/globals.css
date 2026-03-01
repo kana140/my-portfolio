@@ -66,6 +66,9 @@ body {
   --color-border: #90aec6;
   --color-desktop-background: #e9f2e9;
   --color-hr: #a8cad3;
+  --color-darkmode: #252728;
+  --color-dark-card: #252728;
+  --color-dark-text: #dfe3e7;
   /* --color-background: #f1f0f4; */
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   @keyframes wiggle {

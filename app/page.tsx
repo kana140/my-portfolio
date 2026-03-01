@@ -24,6 +24,7 @@ export default function Home() {
                   key={w.id}
                   title={title}
                   defaultSize={w.app.defaultSize}
+                  link={w.app?.link}
                   x={w.x}
                   y={w.y}
                   z={w.z}
