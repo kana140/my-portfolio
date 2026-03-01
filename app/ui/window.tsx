@@ -60,7 +60,7 @@ export default function Window({
 
   return (
     <div
-      className={`absolute flex flex-col rounded-xl bg-window shadow-lg border-2 border-black/50 dark:bg-neutral-800 dark:text-white dark:shadow-lg dark:border dark:border-white/10 `}
+      className={`absolute flex flex-col rounded-xl bg-window shadow-lg border-2 border-black/50 dark:bg-neutral-800 dark:text-white dark:shadow-lg dark:border dark:border-white/10 overflow-hidden `}
       style={{
         left: isMobile ? 0 : x,
         top: isMobile ? "10%" : y,
@@ -71,7 +71,7 @@ export default function Window({
       onMouseDown={onFocus}
     >
       <div
-        className="h-10 flex items-center justify-between px-3 bg-border  dark:bg-neutral-900 cursor-move select-none"
+        className="h-10 flex items-center justify-between px-3 bg-border dark:bg-neutral-900 cursor-move select-none"
         onMouseDown={onMouseDownTitle}
       >
         <div className="font-medium text-sm">{title}</div>
