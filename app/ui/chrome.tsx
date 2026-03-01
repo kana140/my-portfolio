@@ -19,7 +19,7 @@ export default function ChromeBar() {
       <ChromeButton>
         <RotateCw size={14} strokeWidth={2.5} />
       </ChromeButton>
-      <div className="flex flex-row gap-2 w-[60%] h-full rounded-full bg-gray-200 text-black justify-between items-center m-1.5 p-2">
+      <div className="flex flex-row gap-2 w-[60%] rounded-full bg-gray-200 text-black justify-between items-center m-1.5 p-2">
         <input
           type="text"
           className="w-full outline-none"
