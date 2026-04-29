@@ -3,14 +3,17 @@ import Window from "./ui/window";
 import useWindowManager from "./hooks/useWindowManager";
 import DesktopIcons from "./ui/desktop-icons";
 import Taskbar from "./ui/taskbar";
+import Sticky from "./ui/sticky";
+import PixelatedBackground from "./ui/pixelated-background";
 
 export default function Home() {
   const { windows, open, close, focus, move, minimize } = useWindowManager();
 
   return (
-    <div className="p-2 h-screen bg-desktop shadow-md overflow-hidden">
-      <div className="m-auto h-full w-full bg-[url(/pictures/background.png)] flex flex-col justify-between p-2">
-        <div className="flex flex-row">
+    <div className="p-2 h-screen bg-black shadow-md overflow-hidden">
+      <div className="relative m-auto h-full w-full rounded-t-2xl overflow-hidden flex flex-col justify-between p-1">
+        <PixelatedBackground src="/pictures/background.png" pixelSize={2} />
+        <div className="flex flex-row relative z-10">
           <DesktopIcons open={open} />
           {windows
             .filter((w) => !w.minimized)
@@ -37,52 +40,42 @@ export default function Home() {
                 </Window>
               );
             })}
-          <div className="m-auto border-2 border-black bg-pink-50 w-70 p-5 text-center">
-            <div className="m-auto">
+          <Sticky color="pink" className="m-auto w-64">
+            <div className="space-y-2">
               <p>Hi, I'm Keitel (Key-tell), but you can call me Key!</p>
-              <br />
               <p>
                 Feel free to look around, this is very much a work in progress
                 but I hope you can see how much fun I've been having making this
                 so far.
               </p>
-              <br />
               <p>
                 I'm still trying to find ways to make this better, so please
                 feel free to let me know if you have any suggestions on how I
                 could improve!
               </p>
             </div>
-          </div>
-          <div
-            className={`ml-auto border-2 border-black bg-yellow-100 text-center flex flex-col`}
-          >
-            {/* ooooh make this a tickable thinggg */}
-            <div className="p-2">
-              <p className="">To do: </p>
-              <ul>
-                <input type="checkbox" /> Check out Profile{" "}
-              </ul>
-              <ul>
-                <input type="checkbox" /> Check out Experience{" "}
-              </ul>
-              <ul>
-                <input type="checkbox" /> Check out projects{" "}
-              </ul>
-              <ul>
-                <input type="checkbox" /> Visit LinkedIn{" "}
-              </ul>
-              <ul>
-                <input type="checkbox" /> Send me a message{" "}
-              </ul>
-              <ul>
-                {" "}
-                {/* <input type="checkbox" /> Leave a message in guest book! */}
-              </ul>
-            </div>
-          </div>
+          </Sticky>
+          <Sticky color="yellow" className="ml-auto w-48">
+            <p className="font-semibold mb-2">To do:</p>
+            <ul className="space-y-1">
+              {[
+                "Check out Profile",
+                "Check out Experience",
+                "Check out Projects",
+                "Visit LinkedIn",
+                "Send me a message",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <input type="checkbox" className="accent-[#E8C84A]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Sticky>
         </div>
-        <Taskbar open={open} windows={windows} />
+        <div className="relative z-10">
+          <Taskbar open={open} windows={windows} />
+        </div>
       </div>
     </div>
   );

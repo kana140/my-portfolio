@@ -65,6 +65,7 @@ export type WindowProps = {
 
 export type HoverableSpriteProp = {
   image: string;
+  scale?: number;
 };
 
 export type SocialLinks = {

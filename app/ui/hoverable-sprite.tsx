@@ -2,7 +2,7 @@ import { SpriteAnimator } from "react-sprite-animator";
 import { useState } from "react";
 import { HoverableSpriteProp } from "../lib/definitions";
 
-export default function HoverableSprite({ image }: HoverableSpriteProp) {
+export default function HoverableSprite({ image, scale = 2 }: HoverableSpriteProp) {
   const [frameNo, setFrameNo] = useState(0);
 
   return (
@@ -15,8 +15,7 @@ export default function HoverableSprite({ image }: HoverableSpriteProp) {
         loop={false}
         frame={frameNo}
         shouldAnimate={false}
-        scale={2}
-        // stopLastFrame={true}
+        scale={scale}
         resetOnEnd={true}
       />
     </div>

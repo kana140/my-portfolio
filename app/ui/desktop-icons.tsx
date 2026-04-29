@@ -30,7 +30,7 @@ export default function DesktopIcons({ open }: IconsProp) {
                 <Image src={app.image} alt="app" width={100} height={100} />
               )}
             </div>
-            <p className="text-sm">{app.title}</p>
+            <p className="text-xs text-white text-center font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">{app.title}</p>
           </div>
         );
       })}
