@@ -1,18 +1,22 @@
 "use client";
+import { useState } from "react";
 import Window from "./ui/window";
 import useWindowManager from "./hooks/useWindowManager";
 import DesktopIcons from "./ui/desktop-icons";
 import Taskbar from "./ui/taskbar";
 import Sticky from "./ui/sticky";
 import PixelatedBackground from "./ui/pixelated-background";
+import LoadingScreen from "./ui/loading-screen";
 
 export default function Home() {
   const { windows, open, close, focus, move, minimize } = useWindowManager();
+  const [bgLoaded, setBgLoaded] = useState(false);
 
   return (
     <div className="p-2 h-screen bg-black shadow-md overflow-hidden">
       <div className="relative m-auto h-full w-full rounded-t-2xl overflow-hidden flex flex-col justify-between p-1">
-        <PixelatedBackground src="/pictures/background.png" pixelSize={2} />
+        <LoadingScreen isLoaded={bgLoaded} />
+        <PixelatedBackground src="/pictures/background.png" pixelSize={2} onLoad={() => setBgLoaded(true)} />
         <div className="flex flex-row relative z-10">
           <DesktopIcons open={open} />
           {windows

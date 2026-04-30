@@ -1,16 +1,17 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-type Props = { src: string; pixelSize?: number };
+type Props = { src: string; pixelSize?: number; onLoad?: () => void };
 
-export default function PixelatedBackground({ src, pixelSize = 8 }: Props) {
+export default function PixelatedBackground({ src, pixelSize = 8, onLoad }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const draw = () => {
+    const draw = (img: HTMLImageElement) => {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       if (!w || !h) return;
@@ -20,26 +21,31 @@ export default function PixelatedBackground({ src, pixelSize = 8 }: Props) {
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
-      const img = new window.Image();
-      img.onload = () => {
-        const offscreen = document.createElement("canvas");
-        offscreen.width = Math.max(1, Math.floor(w / pixelSize));
-        offscreen.height = Math.max(1, Math.floor(h / pixelSize));
-        const offCtx = offscreen.getContext("2d");
-        if (!offCtx) return;
+      const offscreen = document.createElement("canvas");
+      offscreen.width = Math.max(1, Math.floor(w / pixelSize));
+      offscreen.height = Math.max(1, Math.floor(h / pixelSize));
+      const offCtx = offscreen.getContext("2d");
+      if (!offCtx) return;
 
-        offCtx.drawImage(img, 0, 0, offscreen.width, offscreen.height);
-        ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(offscreen, 0, 0, w, h);
-      };
-      img.src = src;
+      offCtx.drawImage(img, 0, 0, offscreen.width, offscreen.height);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(offscreen, 0, 0, w, h);
     };
 
-    draw();
-    const observer = new ResizeObserver(draw);
+    const img = new window.Image();
+    imgRef.current = img;
+    img.onload = () => {
+      draw(img);
+      onLoad?.();
+    };
+    img.src = src;
+
+    const observer = new ResizeObserver(() => {
+      if (imgRef.current?.complete) draw(imgRef.current);
+    });
     observer.observe(canvas);
     return () => observer.disconnect();
-  }, [src, pixelSize]);
+  }, [src, pixelSize, onLoad]);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 }
